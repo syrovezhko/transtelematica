@@ -11,9 +11,9 @@
   {"id": "10", "parent_id": "4", "name": "Nissan", "flags": ""},
   {"id": "11", "parent_id": "4", "name": "Peugeot", "flags": ""},
   {"id": "12", "parent_id": "4", "name": "Renault", "flags": ""},
-  {"id": "13", "parent_id": "5", "name": "Volvo", "flags": ""},
-  {"id": "14", "parent_id": "5", "name": "Daf", "flags": ""},
-  {"id": "16", "parent_id": "5", "name": "Skyliner", "flags": ""},
+  {"id": "13", "parent_id": "5", "name": "Trolaz", "flags": ""},
+  {"id": "14", "parent_id": "5", "name": "Ufattz", "flags": ""},
+  {"id": "16", "parent_id": "5", "name": "Trans-alfa", "flags": ""},
   {"id": "16", "parent_id": "6", "name": "UKVZ", "flags": ""},
   {"id": "17", "parent_id": "6", "name": "PK-TS", "flags": ""},
   {"id": "18", "parent_id": "6", "name": "UralTransMash", "flags": ""}
