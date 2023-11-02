@@ -27,17 +27,9 @@ module.exports = {
         use: [
           {
             loader: 'style-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  "targets": "defaults" 
-                }],
-                '@babel/preset-react'
-              ]
-            }
           },
           {
-            loader: 'css-loader',
+            loader: 'css-loader'
           },
         ],
       },
