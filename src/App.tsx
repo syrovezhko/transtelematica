@@ -1,8 +1,10 @@
 import React from 'react';
+import './app.css';
 
 const App = () => {
   return (
-      <h3>Hello World</h3>
+    <section className="wrapper">
+    </section>
   );
 };
 
