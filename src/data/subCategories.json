@@ -14,7 +14,7 @@
   {"id": "13", "parent_id": "5", "name": "Trolaz", "flags": ""},
   {"id": "14", "parent_id": "5", "name": "Ufattz", "flags": ""},
   {"id": "16", "parent_id": "5", "name": "Trans-alfa", "flags": ""},
-  {"id": "16", "parent_id": "6", "name": "UKVZ", "flags": ""},
-  {"id": "17", "parent_id": "6", "name": "PK-TS", "flags": ""},
-  {"id": "18", "parent_id": "6", "name": "UralTransMash", "flags": ""}
+  {"id": "17", "parent_id": "6", "name": "UKVZ", "flags": ""},
+  {"id": "18", "parent_id": "6", "name": "PK-TS", "flags": ""},
+  {"id": "19", "parent_id": "6", "name": "UralTransMash", "flags": ""}
 ]
