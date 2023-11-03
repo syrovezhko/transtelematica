@@ -30,7 +30,7 @@ type SingleSelectProps = {
 };
 
 type SelectProps = {
-  parent: number;
+  parent: number | null;
   options: SelectOption[];
   reduxDeleteOne: any;
 } & (SingleSelectProps | MultipleSelectProps);
