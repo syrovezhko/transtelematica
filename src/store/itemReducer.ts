@@ -12,11 +12,12 @@ interface CategoryState {
 }
 
 export enum SubCategoryActionTypes {
-  GET_SUB_CATEGORIES     = 'GET_SUB_CATEGORIES',
-  SET_SUB_CATEGORIES     = 'SET_SUB_CATEGORIES',
-  DELETE_SUB_CATEGORY    = 'DELETE_SUB_CATEGORY',
-  HIGHLIGHT_SUB_CATEGORY = 'HIGHLIGHT_SUB_CATEGORY',
-  TOGGLE_SUB_CATEGORY    = 'TOGGLE_SUB_CATEGORY',
+  GET_SUB_CATEGORIES      = 'GET_SUB_CATEGORIES',
+  SET_SUB_CATEGORIES      = 'SET_SUB_CATEGORIES',
+  DELETE_SUB_CATEGORY     = 'DELETE_SUB_CATEGORY',
+  HIGHLIGHT_SUB_CATEGORY  = 'HIGHLIGHT_SUB_CATEGORY',
+  TOGGLE_SUB_CATEGORY     = 'TOGGLE_SUB_CATEGORY',
+  DELETE_ONE_SUB_CATEGORY = 'DELETE_ONE_SUB_CATEGORY',
 }
 
 interface GetSubCategoriesAction {
@@ -39,13 +40,18 @@ interface ToggleSubCategoryAction {
   type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY;
   payload: Category
 }
+interface DeleteOneSubCategoryAction {
+  type: SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY;
+  payload: Category
+}
 
 export type SubCategoryAction =
   GetSubCategoriesAction     |
   SetSubCategoriesAction     |
   DeleteSubCategoryAction    |
   HighlightSubCategoryAction |
-  ToggleSubCategoryAction
+  ToggleSubCategoryAction    |
+  DeleteOneSubCategoryAction
 
 const initialState: CategoryState = {
   categories: [],
@@ -71,6 +77,9 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
     case SubCategoryActionTypes.TOGGLE_SUB_CATEGORY:
       return { ...state, open: !state.open }
 
+    case SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY:
+      return { ...state, category: state.category.filter((o) => o !== action.payload) }
+
     default:
       return state
   }
@@ -81,3 +90,4 @@ export const setSubCategoriesAction = (payload) => ({type: SubCategoryActionType
 export const deleteSubCategoriesAction = () => ({type: SubCategoryActionTypes.DELETE_SUB_CATEGORY})
 export const highlightSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.HIGHLIGHT_SUB_CATEGORY, payload})
 export const toggleSubCategoriesAction = () => ({type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY})
+export const deleteOneSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY, payload})
