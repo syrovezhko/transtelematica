@@ -54,3 +54,10 @@ const initialState: CategoryState = {
   open: false
 }
 
+export const itemReducer = (state = initialState, action: SubCategoryAction): CategoryState => {
+  switch (action.type) {
+
+    default:
+      return state
+  }
+}
