@@ -59,6 +59,9 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
     case SubCategoryActionTypes.GET_SUB_CATEGORIES:
       return { ...state, categories: [...state.categories, ...action.payload] }
 
+    case SubCategoryActionTypes.SET_SUB_CATEGORIES:
+      return { ...state, category: [...state.category, action.payload] }
+
 
     default:
       return state
@@ -66,3 +69,4 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
 }
 
 export const getSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.GET_SUB_CATEGORIES, payload})
+export const setSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.SET_SUB_CATEGORIES, payload})
