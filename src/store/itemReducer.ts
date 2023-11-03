@@ -4,7 +4,14 @@ interface Category {
   flag: string
 }
 
-const initialState = {
+interface CategoryState {
+  categories: Category[],
+  category: Category[] | [],
+  highlight: number,
+  open: boolean,
+}
+
+const initialState: CategoryState = {
   categories: [],
   category: [],
   highlight: 0,
