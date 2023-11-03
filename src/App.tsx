@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
+  const reduxCategory = useSelector((state: RootState) => state.category)
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
