@@ -18,6 +18,27 @@ export enum CategoryActionTypes {
   HIGHLIGHT_CATEGORY = 'HIGHLIGHT_CATEGORY',
   TOGGLE_CATEGORY    = 'TOGGLE_CATEGORY',
 }
+
+interface GetCategoriesAction {
+  type: CategoryActionTypes.GET_CATEGORIES;
+  payload: Category[]
+}
+interface SetCategoriesAction {
+  type: CategoryActionTypes.SET_CATEGORIES;
+  payload: Category
+}
+interface DeleteCategoryAction {
+  type: CategoryActionTypes.DELETE_CATEGORY;
+  payload: Category
+}
+interface HighlightCategoryAction {
+  type: CategoryActionTypes.HIGHLIGHT_CATEGORY;
+  payload: number
+}
+interface ToggleCategoryAction {
+  type: CategoryActionTypes.TOGGLE_CATEGORY;
+  payload: Category
+}
 const initialState: CategoryState = {
   categories: [],
   category: undefined,
