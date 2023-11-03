@@ -65,6 +65,8 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
     case SubCategoryActionTypes.HIGHLIGHT_SUB_CATEGORY:
       return { ...state, highlight: action.payload }
 
+    case SubCategoryActionTypes.TOGGLE_SUB_CATEGORY:
+      return { ...state, open: !state.open }
 
     default:
       return state
@@ -74,3 +76,4 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
 export const getSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.GET_SUB_CATEGORIES, payload})
 export const setSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.SET_SUB_CATEGORIES, payload})
 export const highlightSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.HIGHLIGHT_SUB_CATEGORY, payload})
+export const toggleSubCategoriesAction = () => ({type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY})
