@@ -59,9 +59,13 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
     case CategoryActionTypes.GET_CATEGORIES:
       return { ...state, categories: [...state.categories, ...action.payload] }
 
+    case CategoryActionTypes.SET_CATEGORIES:
+      return { ...state, category: action.payload }
+      
     default:
       return state
   }
 }
 
 export const getCategoriesAction = (payload) => ({type: CategoryActionTypes.GET_CATEGORIES, payload})
+export const setCategoriesAction = (payload) => ({type: CategoryActionTypes.SET_CATEGORIES, payload})
