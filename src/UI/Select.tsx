@@ -30,25 +30,25 @@ type SingleSelectProps = {
 };
 
 type SelectProps = {
+  parent: number;
   options: SelectOption[];
+  reduxDeleteOne: any;
 } & (SingleSelectProps | MultipleSelectProps);
 
 export function Select({
   multiple,
-  value,
-  onChange,
-  options,
   reduxSetCategory,
   reduxCategory,
   reduxDelete,
   reduxHighlight,
-  reduxToggle
+  reduxToggle,
+  parent,
+  reduxDeleteOne
 }: SelectProps) {
-
   const [isOpen, setIsOpen] = useState(reduxCategory.open);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
-
   const containerRef = useRef<HTMLDivElement>(null);
+  const value = reduxCategory.categories.filter((i) => i.parent_id == parent);
 
   useEffect(() => {
     reduxToggle();
@@ -57,29 +57,22 @@ export function Select({
     }
   }, [isOpen]);
 
-
   useEffect(() => {
-    reduxHighlight(highlightedIndex)
+    reduxHighlight(highlightedIndex);
   }, [highlightedIndex]);
-
-  // function clearOptions() {
-  //   multiple ? onChange([]) : onChange(undefined);
-  // }
 
   function selectOption(option: SelectOption) {
     if (multiple) {
-      if (value.includes(option)) {
-        onChange(value.filter((o) => o !== option));
-      } else {
-        onChange([...value, option]);
+      if (!reduxCategory.category.includes(option)) {
+        reduxSetCategory(option);
       }
     } else {
-      // if (option !== value) onChange(option);
+      if (option !== value) reduxSetCategory(option);
     }
   }
 
   function isOptionSelected(option: SelectOption) {
-    return multiple ? value.includes(option) : option === reduxCategory.category;
+    return multiple ? reduxCategory.category.includes(option) : option === reduxCategory.category;
   }
 
   useEffect(() => {
@@ -125,12 +118,12 @@ export function Select({
       className="container">
       <span className="value">
         {multiple
-          ? value.map((v) => (
+          ? reduxCategory.category.map((v) => (
               <button
                 key={v.id}
                 onClick={(e) => {
                   e.stopPropagation();
-                  selectOption(v);
+                  reduxDeleteOne(v)
                 }}
                 className="option-badge">
                 {v.name}
@@ -143,7 +136,6 @@ export function Select({
         onClick={(e) => {
           e.stopPropagation();
           reduxDelete();
-          // clearOptions();
         }}
         className="clear-btn">
         &times;
@@ -151,11 +143,10 @@ export function Select({
       <div className="divider"></div>
       <div className="caret"></div>
       <ul className={`options ${isOpen ? 'show' : ''}`}>
-        {reduxCategory.categories.map((option, index) => (
+        {value.map((option, index) => (
           <li
             onClick={(e) => {
               e.stopPropagation();
-              reduxSetCategory(option);
               selectOption(option);
               setIsOpen(false);
             }}
