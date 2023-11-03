@@ -68,6 +68,9 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
     case CategoryActionTypes.HIGHLIGHT_CATEGORY:
       return { ...state, highlight: action.payload }
 
+    case CategoryActionTypes.TOGGLE_CATEGORY:
+      return { ...state, open: !state.open }
+
     default:
       return state
   }
@@ -77,3 +80,4 @@ export const getCategoriesAction = (payload) => ({type: CategoryActionTypes.GET_
 export const setCategoriesAction = (payload) => ({type: CategoryActionTypes.SET_CATEGORIES, payload})
 export const deleteCategoriesAction = () => ({type: CategoryActionTypes.DELETE_CATEGORY})
 export const highlightCategoriesAction = (payload) => ({type: CategoryActionTypes.HIGHLIGHT_CATEGORY, payload})
+export const toggleCategoriesAction = () => ({type: CategoryActionTypes.TOGGLE_CATEGORY})
