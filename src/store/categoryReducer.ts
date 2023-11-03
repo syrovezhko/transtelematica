@@ -65,6 +65,9 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
     case CategoryActionTypes.DELETE_CATEGORY:
       return { ...state, category: undefined }
 
+    case CategoryActionTypes.HIGHLIGHT_CATEGORY:
+      return { ...state, highlight: action.payload }
+
     default:
       return state
   }
@@ -73,3 +76,4 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
 export const getCategoriesAction = (payload) => ({type: CategoryActionTypes.GET_CATEGORIES, payload})
 export const setCategoriesAction = (payload) => ({type: CategoryActionTypes.SET_CATEGORIES, payload})
 export const deleteCategoriesAction = () => ({type: CategoryActionTypes.DELETE_CATEGORY})
+export const highlightCategoriesAction = (payload) => ({type: CategoryActionTypes.HIGHLIGHT_CATEGORY, payload})
