@@ -56,8 +56,13 @@ const initialState: CategoryState = {
 
 export const itemReducer = (state = initialState, action: SubCategoryAction): CategoryState => {
   switch (action.type) {
+    case SubCategoryActionTypes.GET_SUB_CATEGORIES:
+      return { ...state, categories: [...state.categories, ...action.payload] }
+
 
     default:
       return state
   }
 }
+
+export const getSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.GET_SUB_CATEGORIES, payload})
