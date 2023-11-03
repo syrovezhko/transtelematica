@@ -3,7 +3,14 @@ interface Category {
   name: string,
   flag: string
 }
-const initialState = {
+
+interface CategoryState {
+  categories: Category[],
+  category: Category | undefined,
+  highlight: number,
+  open: boolean,
+}
+const initialState: CategoryState = {
   categories: [],
   category: undefined,
   highlight: 0,
