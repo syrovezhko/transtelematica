@@ -39,6 +39,14 @@ interface ToggleCategoryAction {
   type: CategoryActionTypes.TOGGLE_CATEGORY;
   payload: Category
 }
+
+export type CategoryAction =
+  GetCategoriesAction     |
+  SetCategoriesAction     |
+  DeleteCategoryAction    |
+  HighlightCategoryAction |
+  ToggleCategoryAction
+
 const initialState: CategoryState = {
   categories: [],
   category: undefined,
