@@ -3,3 +3,11 @@ interface Category {
   name: string,
   flag: string
 }
+
+const initialState = {
+  categories: [],
+  category: [],
+  highlight: 0,
+  open: false
+}
+
