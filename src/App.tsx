@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './app.css';
 import { fetchCategories } from './asyncActions/categories';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchSubCategories } from './asyncActions/subCategories';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchSubCategories());
   }, []);
 
   return (
