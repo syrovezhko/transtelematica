@@ -1,10 +1,10 @@
-interface Category {
+export interface Category {
   id: number,
   name: string,
   flag: string
 }
 
-interface CategoryState {
+export interface CategoryState {
   categories: Category[],
   category: Category | undefined,
   highlight: number,
@@ -78,6 +78,6 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
 
 export const getCategoriesAction = (payload) => ({type: CategoryActionTypes.GET_CATEGORIES, payload})
 export const setCategoriesAction = (payload) => ({type: CategoryActionTypes.SET_CATEGORIES, payload})
-export const deleteCategoriesAction = () => ({type: CategoryActionTypes.DELETE_CATEGORY})
+export const deleteCategoriesAction = (payload) => ({type: CategoryActionTypes.DELETE_CATEGORY, payload})
 export const highlightCategoriesAction = (payload) => ({type: CategoryActionTypes.HIGHLIGHT_CATEGORY, payload})
-export const toggleCategoriesAction = () => ({type: CategoryActionTypes.TOGGLE_CATEGORY})
+export const toggleCategoriesAction = (payload) => ({type: CategoryActionTypes.TOGGLE_CATEGORY, payload})

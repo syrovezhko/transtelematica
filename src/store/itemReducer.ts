@@ -87,7 +87,7 @@ export const itemReducer = (state = initialState, action: SubCategoryAction): Ca
 
 export const getSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.GET_SUB_CATEGORIES, payload})
 export const setSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.SET_SUB_CATEGORIES, payload})
-export const deleteSubCategoriesAction = () => ({type: SubCategoryActionTypes.DELETE_SUB_CATEGORY})
+export const deleteSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.DELETE_SUB_CATEGORY, payload})
 export const highlightSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.HIGHLIGHT_SUB_CATEGORY, payload})
-export const toggleSubCategoriesAction = () => ({type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY})
+export const toggleSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY, payload})
 export const deleteOneSubCategoriesAction = (payload) => ({type: SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY, payload})
