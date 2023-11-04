@@ -1,15 +1,15 @@
 import { Dispatch, useEffect, useRef, useState } from 'react';
 import './select.css';
 import React from 'react';
-import { CategoryAction, CategoryState, Category } from './types/types';
+import { CategoryAction, CategoryState, Category, SubCategoryState } from './../../types/types';
 
 type SelectProps = {
   multiple: boolean;
-  reduxSetCategory: Dispatch<CategoryAction>;
-  reduxCategory: CategoryState;
+  reduxSetCategory: Dispatch<CategoryAction> & Dispatch<Category>;
+  reduxCategory: CategoryState | SubCategoryState;
   reduxDelete: Dispatch<CategoryAction>;
-  reduxHighlight: Dispatch<CategoryAction>;
-  reduxToggle: Dispatch<CategoryAction>;
+  reduxHighlight: Dispatch<CategoryAction> & Dispatch<number>;
+  reduxToggle: Dispatch<CategoryAction> & Dispatch<boolean>;
   parent: number | null;
   reduxDeleteOne: Dispatch<CategoryAction>;
 };
@@ -27,7 +27,10 @@ export function Select({
   const [isOpen, setIsOpen] = useState(reduxCategory.open);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const value = reduxCategory.categories.filter((i) => i.parent_id == parent);
+  const value = reduxCategory.category as Category;
+  const valueMultiple = reduxCategory.categories.filter((i) => i.parent_id == parent) as Category[];
+  const multipleCategory = reduxCategory.category as Category[]
+  const singleCategory = reduxCategory.category as Category
 
   useEffect(() => {
     reduxToggle(isOpen);
@@ -42,16 +45,17 @@ export function Select({
 
   function selectOption(option: Category) {
     if (multiple) {
-      if (!reduxCategory.category.includes(option)) {
+      if (!multipleCategory.includes(option)) {
         reduxSetCategory(option);
       }
     } else {
+      console.log(option)
       if (option !== value) reduxSetCategory(option);
     }
   }
 
   function isOptionSelected(option: Category) {
-    return multiple ? reduxCategory.category.includes(option) : option === reduxCategory.category;
+    return multiple ? multipleCategory.includes(option) : option === reduxCategory.category;
   }
 
   useEffect(() => {
@@ -97,7 +101,7 @@ export function Select({
       className="container">
       <span className="value">
         {multiple
-          ? reduxCategory.category.map((v) => (
+          ? multipleCategory.map((v) => (
               <button
                 key={v.id}
                 onClick={(e) => {
@@ -109,7 +113,7 @@ export function Select({
                 <span className="remove-btn">&times;</span>
               </button>
             ))
-          : reduxCategory.category?.name}
+          : singleCategory?.name}
       </span>
       <button
         onClick={(e) => {
@@ -122,7 +126,7 @@ export function Select({
       <div className="divider"></div>
       <div className="caret"></div>
       <ul className={`options ${isOpen ? 'show' : ''}`}>
-        {value.map((option, index) => (
+        {valueMultiple.map((option, index) => (
           <li
             onClick={(e) => {
               e.stopPropagation();
