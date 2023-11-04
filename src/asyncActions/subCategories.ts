@@ -1,4 +1,5 @@
-import { getSubCategoriesAction, SubCategoryAction } from "./../store/itemReducer";
+import { getSubCategoriesAction } from "./../store/itemReducer";
+import {SubCategoryAction} from "./../types/types"
 import { Dispatch } from "../../node_modules/redux/index";
 import subCategories from './../data/subCategories.json';
 
