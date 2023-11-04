@@ -3,8 +3,6 @@ export interface Category {
   name: string,
   flag: string
 }
-
-
 type CommonCategorySet = {
   categories: Category[],
   category: Category | undefined | Category[] | [],
@@ -14,11 +12,9 @@ type CommonCategorySet = {
 export interface CategoryState extends CommonCategorySet{
   category: Category | undefined,
 }
-
 export interface SubCategoryState extends CommonCategorySet {
   category: Category[] | []
 }
-
 export enum CategoryActionTypes {
   GET_CATEGORIES     = 'GET_CATEGORIES',
   SET_CATEGORIES     = 'SET_CATEGORIES',
@@ -26,7 +22,14 @@ export enum CategoryActionTypes {
   HIGHLIGHT_CATEGORY = 'HIGHLIGHT_CATEGORY',
   TOGGLE_CATEGORY    = 'TOGGLE_CATEGORY',
 }
-
+export enum SubCategoryActionTypes {
+  GET_SUB_CATEGORIES      = 'GET_SUB_CATEGORIES',
+  SET_SUB_CATEGORIES      = 'SET_SUB_CATEGORIES',
+  DELETE_SUB_CATEGORY     = 'DELETE_SUB_CATEGORY',
+  HIGHLIGHT_SUB_CATEGORY  = 'HIGHLIGHT_SUB_CATEGORY',
+  TOGGLE_SUB_CATEGORY     = 'TOGGLE_SUB_CATEGORY',
+  DELETE_ONE_SUB_CATEGORY = 'DELETE_ONE_SUB_CATEGORY',
+}
 interface GetCategoriesAction {
   type: CategoryActionTypes.GET_CATEGORIES;
   payload: Category[]
@@ -47,26 +50,6 @@ interface ToggleCategoryAction {
   type: CategoryActionTypes.TOGGLE_CATEGORY;
   payload: Category
 }
-
-export type CategoryAction =
-  GetCategoriesAction     |
-  SetCategoriesAction     |
-  DeleteCategoryAction    |
-  HighlightCategoryAction |
-  ToggleCategoryAction
-
-// ==========
-
-
-export enum SubCategoryActionTypes {
-  GET_SUB_CATEGORIES      = 'GET_SUB_CATEGORIES',
-  SET_SUB_CATEGORIES      = 'SET_SUB_CATEGORIES',
-  DELETE_SUB_CATEGORY     = 'DELETE_SUB_CATEGORY',
-  HIGHLIGHT_SUB_CATEGORY  = 'HIGHLIGHT_SUB_CATEGORY',
-  TOGGLE_SUB_CATEGORY     = 'TOGGLE_SUB_CATEGORY',
-  DELETE_ONE_SUB_CATEGORY = 'DELETE_ONE_SUB_CATEGORY',
-}
-
 interface GetSubCategoriesAction {
   type: SubCategoryActionTypes.GET_SUB_CATEGORIES;
   payload: Category[]
@@ -91,6 +74,12 @@ interface DeleteOneSubCategoryAction {
   type: SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY;
   payload: Category
 }
+export type CategoryAction =
+  GetCategoriesAction     |
+  SetCategoriesAction     |
+  DeleteCategoryAction    |
+  HighlightCategoryAction |
+  ToggleCategoryAction
 
 export type SubCategoryAction =
   GetSubCategoriesAction     |
