@@ -49,7 +49,7 @@ interface HighlightCategoryAction {
 }
 interface ToggleCategoryAction {
   type: CategoryActionTypes.TOGGLE_CATEGORY;
-  payload: Category
+  payload: boolean
 }
 interface GetSubCategoriesAction {
   type: SubCategoryActionTypes.GET_SUB_CATEGORIES;
