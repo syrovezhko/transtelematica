@@ -1,39 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, useEffect, useRef, useState } from 'react';
 import './select.css';
 import React from 'react';
-
-export type SelectOption = {
-  name: string;
-  id: number;
-  flags: string;
-};
-
-type MultipleSelectProps = {
-  multiple: true;
-  value: SelectOption[];
-  onChange: (value: SelectOption[]) => void;
-  reduxSetCategory: any;
-  reduxCategory: any;
-  reduxDelete: any;
-  reduxHighlight: any;
-  reduxToggle: any;
-};
-
-type SingleSelectProps = {
-  multiple: false;
-  onChange: (value: SelectOption | undefined) => void;
-  reduxSetCategory: any;
-  reduxCategory: any;
-  reduxDelete: any;
-  reduxHighlight: any;
-  reduxToggle: any;
-};
+import { CategoryAction } from './store/categoryReducer';
+import { CategoryState } from './store/categoryReducer';
+import { Category } from './store/categoryReducer';
 
 type SelectProps = {
+  multiple: boolean;
+  reduxSetCategory: Dispatch<CategoryAction>;
+  reduxCategory: CategoryState;
+  reduxDelete: Dispatch<CategoryAction>;
+  reduxHighlight: Dispatch<CategoryAction>;
+  reduxToggle: Dispatch<CategoryAction>;
   parent: number | null;
-  options: SelectOption[];
-  reduxDeleteOne: any;
-} & (SingleSelectProps | MultipleSelectProps);
+  options: Category[];
+  reduxDeleteOne: Dispatch<CategoryAction>;
+};
 
 export function Select({
   multiple,
@@ -51,7 +33,7 @@ export function Select({
   const value = reduxCategory.categories.filter((i) => i.parent_id == parent);
 
   useEffect(() => {
-    reduxToggle();
+    reduxToggle(isOpen);
     if (isOpen !== reduxCategory.open) {
       setIsOpen(reduxCategory.open);
     }
@@ -61,7 +43,7 @@ export function Select({
     reduxHighlight(highlightedIndex);
   }, [highlightedIndex]);
 
-  function selectOption(option: SelectOption) {
+  function selectOption(option: Category) {
     if (multiple) {
       if (!reduxCategory.category.includes(option)) {
         reduxSetCategory(option);
@@ -71,7 +53,7 @@ export function Select({
     }
   }
 
-  function isOptionSelected(option: SelectOption) {
+  function isOptionSelected(option: Category) {
     return multiple ? reduxCategory.category.includes(option) : option === reduxCategory.category;
   }
 
@@ -123,7 +105,7 @@ export function Select({
                 key={v.id}
                 onClick={(e) => {
                   e.stopPropagation();
-                  reduxDeleteOne(v)
+                  reduxDeleteOne(v);
                 }}
                 className="option-badge">
                 {v.name}
@@ -135,7 +117,7 @@ export function Select({
       <button
         onClick={(e) => {
           e.stopPropagation();
-          reduxDelete();
+          reduxDelete(e);
         }}
         className="clear-btn">
         &times;
