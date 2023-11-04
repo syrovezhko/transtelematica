@@ -18,7 +18,6 @@ import {
   setSubCategoriesAction,
   toggleSubCategoriesAction
 } from './../../store/itemReducer';
-import { CategoryAction } from 'types/types';
 
 const Container = () => {
   const dispatch = useDispatch();
