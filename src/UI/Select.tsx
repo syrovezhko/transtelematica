@@ -13,7 +13,6 @@ type SelectProps = {
   reduxHighlight: Dispatch<CategoryAction>;
   reduxToggle: Dispatch<CategoryAction>;
   parent: number | null;
-  options: Category[];
   reduxDeleteOne: Dispatch<CategoryAction>;
 };
 
