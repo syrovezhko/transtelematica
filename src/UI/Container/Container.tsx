@@ -32,22 +32,15 @@ const Container = () => {
 
   return (
     <section className="wrapper">
-      {reduxCategory.categories.length ? (
-        <Select
-          multiple={false}
-          parent={null}
-          reduxCategory={reduxCategory}
-          reduxSetCategory={(option) => dispatch(setCategoriesAction(option))}
-          reduxDelete={(e) => dispatch(deleteCategoriesAction(e))}
-          reduxHighlight={(id) => dispatch(highlightCategoriesAction(id))}
-          reduxToggle={(e) => dispatch(toggleCategoriesAction(e))}
-          reduxDeleteOne={function (value: CategoryAction): void {
-            throw new Error("Function not implemented because of it's not needed.");
-          }}
-        />
-      ) : (
-        <h1>Loading</h1>
-      )}
+      <Select
+        multiple={false}
+        parent={null}
+        reduxCategory={reduxCategory}
+        reduxSetCategory={(option) => dispatch(setCategoriesAction(option))}
+        reduxDelete={(e) => dispatch(deleteCategoriesAction(e))}
+        reduxHighlight={(id) => dispatch(highlightCategoriesAction(id))}
+        reduxToggle={(e) => dispatch(toggleCategoriesAction(e))}
+      />
       {reduxCategory.category && (
         <Select
           multiple={true}
