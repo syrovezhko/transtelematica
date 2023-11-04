@@ -1,7 +1,8 @@
 export interface Category {
   id: number,
   name: string,
-  flag: string
+  flag: string,
+  parent_id?: number
 }
 type CommonCategorySet = {
   categories: Category[],
@@ -68,7 +69,7 @@ interface HighlightSubCategoryAction {
 }
 interface ToggleSubCategoryAction {
   type: SubCategoryActionTypes.TOGGLE_SUB_CATEGORY;
-  payload: Category
+  payload: boolean
 }
 interface DeleteOneSubCategoryAction {
   type: SubCategoryActionTypes.DELETE_ONE_SUB_CATEGORY;
