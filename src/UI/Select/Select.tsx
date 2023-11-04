@@ -1,17 +1,17 @@
 import { Dispatch, useEffect, useRef, useState } from 'react';
 import './select.css';
 import React from 'react';
-import { CategoryAction, CategoryState, Category, SubCategoryState } from './../../types/types';
+import { CategoryAction, CategoryState, Category, SubCategoryState, SubCategoryAction } from './../../types/types';
 
 type SelectProps = {
   multiple: boolean;
   reduxSetCategory: Dispatch<CategoryAction> & Dispatch<Category>;
   reduxCategory: CategoryState | SubCategoryState;
-  reduxDelete: Dispatch<CategoryAction>;
+  reduxDelete: Dispatch<CategoryAction> & Dispatch<string>;
   reduxHighlight: Dispatch<CategoryAction> & Dispatch<number>;
   reduxToggle: Dispatch<CategoryAction> & Dispatch<boolean>;
   parent: number | null;
-  reduxDeleteOne: Dispatch<CategoryAction>;
+  reduxDeleteOne: Dispatch<SubCategoryAction> & Dispatch<Category>;
 };
 
 export function Select({
@@ -49,7 +49,6 @@ export function Select({
         reduxSetCategory(option);
       }
     } else {
-      console.log(option)
       if (option !== value) reduxSetCategory(option);
     }
   }
@@ -118,7 +117,8 @@ export function Select({
       <button
         onClick={(e) => {
           e.stopPropagation();
-          reduxDelete(e);
+          console.log(e)
+          reduxDelete('e');
         }}
         className="clear-btn">
         &times;
