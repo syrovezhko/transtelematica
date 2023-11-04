@@ -1,9 +1,7 @@
 import { Dispatch, useEffect, useRef, useState } from 'react';
 import './select.css';
 import React from 'react';
-import { CategoryAction } from './store/categoryReducer';
-import { CategoryState } from './store/categoryReducer';
-import { Category } from './store/categoryReducer';
+import { CategoryAction, CategoryState, Category } from './types/types';
 
 type SelectProps = {
   multiple: boolean;

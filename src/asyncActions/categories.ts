@@ -1,5 +1,6 @@
 import { Dispatch } from "../../node_modules/redux/index";
-import {CategoryAction, getCategoriesAction} from "../store/categoryReducer"
+import {getCategoriesAction} from "../store/categoryReducer"
+import {CategoryAction} from "./../types/types"
 import categories from './../data/categories.json';
 
 const emulateAPI = () =>
