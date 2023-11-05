@@ -1,0 +1,20 @@
+[
+  {"id": "1", "parent_id": "1", "name": "Chevrolet", "flags": ""},
+  {"id": "2", "parent_id": "1", "name": "Bluebird", "flags": ""},
+  {"id": "3", "parent_id": "1", "name": "Freightliner", "flags": ""},
+  {"id": "4", "parent_id": "2", "name": "BraunAbility Vans", "flags": ""},
+  {"id": "5", "parent_id": "2", "name": "Driverge", "flags": ""},
+  {"id": "6", "parent_id": "3", "name": "Krystal Shuttle Buses", "flags": ""},
+  {"id": "7", "parent_id": "3", "name": "Citroen ", "flags": ""},
+  {"id": "8", "parent_id": "3", "name": "Fiat ", "flags": ""},
+  {"id": "9", "parent_id": "3", "name": "Ford ", "flags": ""},
+  {"id": "10", "parent_id": "4", "name": "Nissan", "flags": ""},
+  {"id": "11", "parent_id": "4", "name": "Peugeot", "flags": ""},
+  {"id": "12", "parent_id": "4", "name": "Renault", "flags": ""},
+  {"id": "13", "parent_id": "5", "name": "Trolaz", "flags": ""},
+  {"id": "14", "parent_id": "5", "name": "Ufattz", "flags": ""},
+  {"id": "16", "parent_id": "5", "name": "Trans-alfa", "flags": ""},
+  {"id": "17", "parent_id": "6", "name": "UKVZ", "flags": ""},
+  {"id": "18", "parent_id": "6", "name": "PK-TS", "flags": ""},
+  {"id": "19", "parent_id": "6", "name": "UralTransMash", "flags": ""}
+]

@@ -1,0 +1,8 @@
+[
+  {"id": 1, "name": "City bus", "flags": ""},
+  {"id": 2, "name": "Intercity bus", "flags": ""},
+  {"id": 3, "name": "Airport shuttle", "flags": ""},
+  {"id": 4, "name": "Minibus", "flags": ""},
+  {"id": 5, "name": "Trolleybus", "flags": ""},
+  {"id": 6, "name": "Tram", "flags": ""}
+]
