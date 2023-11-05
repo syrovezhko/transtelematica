@@ -1,6 +1,7 @@
-import { getSubCategoriesAction, SubCategoryAction } from "./../store/itemReducer";
+import {SubCategoryAction} from "./../types/types"
 import { Dispatch } from "../../node_modules/redux/index";
 import subCategories from './../data/subCategories.json';
+import { getSubCategoriesAction } from "../store/userActions";
 
 const emulateAPI = () =>
   new Promise((resolve) => {

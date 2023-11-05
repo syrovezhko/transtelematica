@@ -7,7 +7,10 @@
     "strictNullChecks": true,
     "module": "es6",
     "jsx": "react",
-    "target": "es5"
+    "target": "es5",
+    "moduleResolution":"node",
+    "resolveJsonModule": true,
+    "types": ["jest", "mocha", "node", "jasmine"],
   },
     "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
@@ -15,6 +18,7 @@
   },
   "include": [
     "./src/**/*",
+    "./tests/**/*",
     "./global.d.ts"
   ]
 }

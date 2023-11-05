@@ -1,39 +1,24 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Dispatch, useEffect, useRef, useState } from 'react';
 import './select.css';
 import React from 'react';
-
-export type SelectOption = {
-  name: string;
-  id: number;
-  flags: string;
-};
-
-type MultipleSelectProps = {
-  multiple: true;
-  value: SelectOption[];
-  onChange: (value: SelectOption[]) => void;
-  reduxSetCategory: any;
-  reduxCategory: any;
-  reduxDelete: any;
-  reduxHighlight: any;
-  reduxToggle: any;
-};
-
-type SingleSelectProps = {
-  multiple: false;
-  onChange: (value: SelectOption | undefined) => void;
-  reduxSetCategory: any;
-  reduxCategory: any;
-  reduxDelete: any;
-  reduxHighlight: any;
-  reduxToggle: any;
-};
+import {
+  CategoryAction,
+  CategoryState,
+  Category,
+  SubCategoryState,
+  SubCategoryAction
+} from './../../types/types';
 
 type SelectProps = {
+  multiple: boolean;
+  reduxSetCategory: Dispatch<CategoryAction> & Dispatch<Category>;
+  reduxCategory: CategoryState | SubCategoryState;
+  reduxDelete: Dispatch<CategoryAction> & Dispatch<string>;
+  reduxHighlight: Dispatch<CategoryAction> & Dispatch<number>;
+  reduxToggle: Dispatch<CategoryAction> & Dispatch<boolean>;
   parent: number | null;
-  options: SelectOption[];
-  reduxDeleteOne: any;
-} & (SingleSelectProps | MultipleSelectProps);
+  reduxDeleteOne?: Dispatch<SubCategoryAction> & Dispatch<Category>;
+};
 
 export function Select({
   multiple,
@@ -48,10 +33,13 @@ export function Select({
   const [isOpen, setIsOpen] = useState(reduxCategory.open);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const value = reduxCategory.categories.filter((i) => i.parent_id == parent);
+  const value = reduxCategory.category as Category;
+  const valueMultiple = reduxCategory.categories.filter((i) => i.parent_id == parent) as Category[];
+  const multipleCategory = reduxCategory.category as Category[];
+  const singleCategory = reduxCategory.category as Category;
 
   useEffect(() => {
-    reduxToggle();
+    reduxToggle(isOpen);
     if (isOpen !== reduxCategory.open) {
       setIsOpen(reduxCategory.open);
     }
@@ -61,9 +49,9 @@ export function Select({
     reduxHighlight(highlightedIndex);
   }, [highlightedIndex]);
 
-  function selectOption(option: SelectOption) {
+  function selectOption(option: Category) {
     if (multiple) {
-      if (!reduxCategory.category.includes(option)) {
+      if (!multipleCategory.includes(option)) {
         reduxSetCategory(option);
       }
     } else {
@@ -71,8 +59,8 @@ export function Select({
     }
   }
 
-  function isOptionSelected(option: SelectOption) {
-    return multiple ? reduxCategory.category.includes(option) : option === reduxCategory.category;
+  function isOptionSelected(option: Category) {
+    return multiple ? multipleCategory.includes(option) : option === reduxCategory.category;
   }
 
   useEffect(() => {
@@ -115,35 +103,39 @@ export function Select({
       onBlur={() => setIsOpen(false)}
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0}
+      data-testid="container"
       className="container">
-      <span className="value">
+      <span
+        className="value" 
+        data-testid="select"
+        >
         {multiple
-          ? reduxCategory.category.map((v) => (
+          ? multipleCategory.map((v) => (
               <button
                 key={v.id}
                 onClick={(e) => {
                   e.stopPropagation();
-                  reduxDeleteOne(v)
+                  if (reduxDeleteOne) reduxDeleteOne(v);
                 }}
                 className="option-badge">
                 {v.name}
                 <span className="remove-btn">&times;</span>
               </button>
             ))
-          : reduxCategory.category?.name}
+          : singleCategory?.name}
       </span>
       <button
         onClick={(e) => {
           e.stopPropagation();
-          reduxDelete();
+          reduxDelete('e');
         }}
         className="clear-btn">
         &times;
       </button>
       <div className="divider"></div>
       <div className="caret"></div>
-      <ul className={`options ${isOpen ? 'show' : ''}`}>
-        {value.map((option, index) => (
+      <ul data-testid="options" className={`options${isOpen ? ' show' : ''}`}>
+        {valueMultiple.map((option, index) => (
           <li
             onClick={(e) => {
               e.stopPropagation();
