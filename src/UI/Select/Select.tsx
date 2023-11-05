@@ -103,8 +103,12 @@ export function Select({
       onBlur={() => setIsOpen(false)}
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0}
+      data-testid="container"
       className="container">
-      <span className="value">
+      <span
+        className="value" 
+        data-testid="select"
+        >
         {multiple
           ? multipleCategory.map((v) => (
               <button
@@ -131,7 +135,7 @@ export function Select({
       </button>
       <div className="divider"></div>
       <div className="caret"></div>
-      <ul className={`options ${isOpen ? 'show' : ''}`}>
+      <ul data-testid="options" className={`options${isOpen ? ' show' : ''}`}>
         {valueMultiple.map((option, index) => (
           <li
             onClick={(e) => {
