@@ -28,9 +28,3 @@ export const categoryReducer = (state = initialState, action: CategoryAction): C
       return state
   }
 }
-
-export const getCategoriesAction = (payload) => ({type: CategoryActionTypes.GET_CATEGORIES, payload})
-export const setCategoriesAction = (payload) => ({type: CategoryActionTypes.SET_CATEGORIES, payload})
-export const deleteCategoriesAction = (payload) => ({type: CategoryActionTypes.DELETE_CATEGORY, payload})
-export const highlightCategoriesAction = (payload) => ({type: CategoryActionTypes.HIGHLIGHT_CATEGORY, payload})
-export const toggleCategoriesAction = (payload) => ({type: CategoryActionTypes.TOGGLE_CATEGORY, payload})
