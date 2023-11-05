@@ -8,16 +8,14 @@ import {
   deleteCategoriesAction,
   highlightCategoriesAction,
   setCategoriesAction,
-  toggleCategoriesAction
-} from './../../store/categoryReducer';
-import { fetchSubCategories } from './../../asyncActions/subCategories';
-import {
+  toggleCategoriesAction,
   deleteOneSubCategoriesAction,
   deleteSubCategoriesAction,
   highlightSubCategoriesAction,
   setSubCategoriesAction,
   toggleSubCategoriesAction
-} from './../../store/itemReducer';
+} from './../../store/userActions';
+import { fetchSubCategories } from './../../asyncActions/subCategories';
 
 const Container = () => {
   const dispatch = useDispatch();
