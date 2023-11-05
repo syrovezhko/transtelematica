@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface HOCProps {
-  loading: boolean;
+  loading?: boolean;
 }
 
 const HoC = <P extends object>(Component: React.ComponentType<P>) =>
