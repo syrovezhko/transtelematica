@@ -127,7 +127,6 @@ export function Select({
       <button
         onClick={(e) => {
           e.stopPropagation();
-          console.log(e);
           reduxDelete('e');
         }}
         className="clear-btn">
