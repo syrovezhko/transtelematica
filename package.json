@@ -8,6 +8,9 @@
     "build": "webpack --mode=production",
     "test": "jest"
   },
+  "jest": {
+    "preset": "ts-jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syrovezhko/transtelematica.git"
@@ -34,6 +37,11 @@
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@types/jasmine": "^5.1.1",
+    "@types/jest": "^29.5.7",
+    "@types/mocha": "^10.0.3",
     "@types/node": "^20.7.1",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
@@ -49,9 +57,14 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.3",
+    "jasmine": "^5.1.0",
     "jest": "^29.7.0",
+    "mocha": "^10.2.0",
     "prettier": "3.0.3",
+    "react-test-renderer": "^18.2.0",
+    "regenerator-runtime": "^0.14.0",
     "style-loader": "^3.3.3",
+    "ts-jest": "^29.1.1",
     "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
